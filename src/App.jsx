@@ -1,16 +1,33 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [darkMode, setDarkMode] = useState('')
+
+  const themeChange = () =>{
+    darkMode ? setDarkMode('') : setDarkMode('dark')
+  }
   return (
     <>
-      <div>
-        <h2>video Saver</h2>
-      </div>
+      <header className='bg-indigo-200 flex justify-between items-center p-2'>
+        <div className='titile-logo'></div>
+        <nav>
+          <ul className='flex items-center gap-x-3'>
+            <li>Home</li>
+            <li>How it Works?</li>
+          </ul>
+        </nav>
+        <div>
+          <button onClick={themeChange}>
+            {darkMode?
+              <img src="/icons/dark.png" className='max-w-8' alt="moon-logo" />
+              :
+              <img src="/icons/light.png" className='max-w-8' alt='sun-logo' />
+            }
+          </button>
+        </div>
+      </header>
     </>
   )
 }
